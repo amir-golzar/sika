@@ -8,7 +8,7 @@ body {
   width: 100vw;
   height: 100vh;
 }
-li{
+li {
   list-style-type: none;
 }
 #nav-home {
@@ -72,16 +72,22 @@ input {
   border-radius: 10px;
   border: none;
 }
-#etelauat-daneshamoz{
-font-size: 16px;
+#etelauat-daneshamoz {
+  font-size: 16px;
 }
 
-nav ul{
-
+nav ul {
   padding-top: 20px;
   display: flex;
   flex-direction: row;
   align-content: flex-end;
   justify-content: space-evenly;
-  align-items: flex-sta
+  align-items: flex-sta;
+}
+
+.a-s {
+  color: aliceblue;
+  border: none !important;
+  font-weight: bold;
+  font-size: 18px;
 }
