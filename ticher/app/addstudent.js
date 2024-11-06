@@ -40,7 +40,9 @@ function submit(e) {
   ) {
     return;
   }
-
+// if (codeMeli===codeMeli) {
+//   return alert("کد ملی تکراری است")
+// }
   let usr = {
     studentName: name.value,
     dateOfBirth: date.value,
@@ -60,5 +62,4 @@ function submit(e) {
   codeMeli.value = "";
   save(usr);
 }
-
 form.addEventListener("submit", submit);

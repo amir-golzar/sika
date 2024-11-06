@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="stu.css" />
+    <!-- <link rel="stylesheet" href="stu.css" /> -->
+    <link rel="stylesheet" href="../ticher/style/style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
+    <nav id="nav-home">
+      <div id="tohi">
+        <a href="../ticher/index.html" class="a-s"
+          >&backcong; سایت آموزش پرورش</a
+        >
+      </div>
+
+      <!-- <div><a href="pages/addstudent.html">مسئول</a></div> -->
+      <!-- <div><a href="../student/stu.html">دانش آموز</a></div> -->
+    </nav>
+    <div
+      id="d"
+      style="
+        display: flex;
+        /* background-color: rgb(255, 0, 0); */
+        width: 100%;
+        height: 95%;
+        align-content: flex-end;
+        justify-content: center;
+        align-items: center;
+      "
+      >
+      <form id="add-su">
+        <div id="etelauat-daneshamoz">Enter student information</div>
+        <input name="user" placeholder="user name (code meli)" type="number" />
+        <input name="ramz" placeholder="password" type="password" />
+        <input name="save" value="save" type="submit" id="saveb" />
+      </form>
+    </div>
+
+    <table id="students-table" style="display: none">
+      <tr>
+        <th>name</th>
+        <th>birth</th>
+        <th>code melli</th>
+        <th>moadel</th>
+      </tr>
+    </table>
+
     <script src="stu.js"></script>
   </body>
 </html>

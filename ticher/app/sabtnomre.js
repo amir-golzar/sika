@@ -1,5 +1,5 @@
 let studentsTable = document.getElementById("students-table");
-
+// alert(location.pathname)
 let i = 0;
 const anim = setInterval(() => {
   i++;
@@ -18,7 +18,7 @@ const anim = setInterval(() => {
 const createStudentData = ({
   studentName: name,
   dateOfBirth: date,
-    userPass: pass,
+  userPass: pass,
   idCode: codeMeli,
 }) => {
   const tableRow = document.createElement("tr");
@@ -105,6 +105,7 @@ const createStudentData = ({
       localStorage.setItem("student", JSON.stringify(savenomre));
       nomreForm.remove();
       overlay.remove();
+      tableRow.remove()
     });
 
     document.body.appendChild(nomreForm);
@@ -165,4 +166,3 @@ window.addEventListener("load", (e) => {
 
   savedStudents.forEach(createStudentData);
 });
- 

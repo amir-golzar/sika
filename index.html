@@ -1,35 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="style/style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sika</title>
+    <title>Document</title>
   </head>
   <body>
-    <nav id="nav-home" >
-  <div id="tohi"><a href="index.html" class="a-s">&backcong; سایت آموزش پرورش</a></div>
+    <form id="form">
+      <input name="name" type="text" />
+      <input name="age" type="number" />
+      <input type="submit" value="submit" />
+    </form>
+    <h1 id="header"></h1>
+    <h1 id="age"></h1>
+    <script>
+      const form = document.getElementById("form");
+      const header = document.getElementById("header");
+      const title = document.getElementById("age");
+      console.log(window.location);
+      console.log(window.location.search);
+      // ?name=amir&age=18
+      // {name:amir,age:18}
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get("name");
+      const age = urlParams.get("age");
 
-      <div><a href="pages/addstudent.html">مسئول</a></div>
-      <div><a href="">دانش آموز</a></div>
-    </nav>
-    <div>
-    <div style="display: flex; width: 100%;justify-content: center;">
+      header.innerText = name;
+      title.innerText = age;
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const { name, age } = e.target;
 
-      
-      <div id="con">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia at nobis
-        sunt dicta quaerat delectus et ipsum necessitatibus, ad quo illo eligendi
-        error aspernatur iure ut, cum laborum, sit nihil.
-      </div>
-      
-      <div id="con">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia at nobis
-        sunt dicta quaerat delectus et ipsum necessitatibus, ad quo illo eligendi
-        error aspernatur iure ut, cum laborum, sit nihil.
-      </div>
-      
-    </div>
-    </div>
+        const params = new URLSearchParams();
+        params.append("name", name.value);
+        params.append("age", age.value);
+        const queryString = params.toString();
+        console.log(queryString);
+        window.location.search = queryString;
+
+        // const url = `https://example.com?${queryString}`;
+        // console.log(url);
+        const url = new URL(`/student/mynomre/html.html?name=${found.idCode}`);
+  // window.location.search = queryString;
+
+  location.pathname = url;
+  // `/student/mynomre/html.html?=${found.idCode}`
+
+      });
+    </script>
   </body>
 </html>

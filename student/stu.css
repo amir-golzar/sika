@@ -101,7 +101,12 @@ nav ul {
   border: none !important;
   font-weight: bold;
   font-size: 18px;
+  text-decoration: none;
 }
+/* #students-table{ */
+/* display: none !important; */
+/*  */
+/* } */
 table {
   left: auto;
   right: auto;

@@ -29,8 +29,6 @@ const addStu = ({ dateOfBirth, idCode, nomreh, studentName, userPass }) => {
   const codeMeliTag = document.createElement("td");
   codeMeliTag.innerText = idCode;
 
-  const btnTag = document.createElement("td");
-  btnTag.innerText = "delete";
 
   const nomreTag = document.createElement("td");
   let n = 0;
@@ -46,7 +44,6 @@ const addStu = ({ dateOfBirth, idCode, nomreh, studentName, userPass }) => {
   tableRow.appendChild(passTag);
   tableRow.appendChild(codeMeliTag);
   tableRow.appendChild(nomreTag);
-  tableRow.appendChild(btnTag);
   gozaresh.appendChild(tableRow);
 };
 
