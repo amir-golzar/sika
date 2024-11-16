@@ -1,19 +1,5 @@
-const gozaresh = document.getElementById("students-table");
+const all = document.getElementById("students-table");
 
-// let i = 0;
-// const anim = setInterval(() => {
-//   i++;
-//   if (i >= 365) {
-//     i = 0;
-//   }
-//   // let i = Math.round(Math.random() * 365)
-//   document.body.style.backgroundImage = `linear-gradient(${i}deg, #0db6dd, #000000)`;
-//   // document.body.style.backgroundImage = `linear-gradient(${Math.round(Math.random() * 365)}deg, #0db6dd, #000000)`;
-//   // document.body.style.backgroundImage = `linear-gradient(${i}deg, #ff0000, #0000ff)`;
-//   // if(i === 69){
-//   //   clearInterval(anim)
-//   // }
-// }, 85);
 
 const addStu = ({ dateOfBirth, idCode, nomreh, studentName, userPass }) => {
   const tableRow = document.createElement("tr");
@@ -43,15 +29,12 @@ const addStu = ({ dateOfBirth, idCode, nomreh, studentName, userPass }) => {
   tableRow.appendChild(passTag);
   tableRow.appendChild(codeMeliTag);
   tableRow.appendChild(nomreTag);
-  gozaresh.appendChild(tableRow);
+  all.appendChild(tableRow);
 };
 
 window.addEventListener("load", function name(p) {
   let loadstu = this.localStorage.getItem("student");
   loadstu = JSON.parse(loadstu);
 
-  loadstu
-    .filter((student) => student.nomreh[0].nomreh !== null)
-    .forEach(addStu);
+  loadstu.forEach(addStu);
 });
-      

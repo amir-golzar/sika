@@ -10,24 +10,25 @@ function save(w) {
   console.log(usrs);
   localStorage.setItem("student", JSON.stringify(usrs));
 }
-let i = 0;
-const anim = setInterval(() => {
-  i++;
-  if (i >= 365) {
-    i = 0;
-  }
-  // let i = Math.round(Math.random() * 365)
-  document.body.style.backgroundImage = `linear-gradient(${i}deg, #0db6dd, #000000)`;
-  // document.body.style.backgroundImage = `linear-gradient(${Math.round(Math.random() * 365)}deg, #0db6dd, #000000)`;
-  // document.body.style.backgroundImage = `linear-gradient(${i}deg, #ff0000, #0000ff)`;
-  // if(i === 69){
-  //   clearInterval(anim)
-  // }
-}, 85);
+// let i = 0;
+// const anim = setInterval(() => {
+//   i++;
+//   if (i >= 365) {
+//     i = 0;
+//   }
+//   // let i = Math.round(Math.random() * 365)
+//   document.body.style.backgroundImage = `linear-gradient(${i}deg, #0db6dd, #000000)`;
+//   // document.body.style.backgroundImage = `linear-gradient(${Math.round(Math.random() * 365)}deg, #0db6dd, #000000)`;
+//   // document.body.style.backgroundImage = `linear-gradient(${i}deg, #ff0000, #0000ff)`;
+//   // if(i === 69){
+//   //   clearInterval(anim)
+//   // }
+// }, 85);
+
 function submit(e) {
   e.preventDefault();
 
-  //   let name = e.target.name.value;
+  // let name = e.target.name.value;
   // let date=e.target.dateB.value
   // let password=e.target.pass.value
   // let codeMeli=e.target.codemeli.value
@@ -40,19 +41,34 @@ function submit(e) {
   ) {
     return;
   }
-// if (codeMeli===codeMeli) {
-//   return alert("کد ملی تکراری است")
-// }
+  // if (codeMeli === codeMeli) {
+  //   return alert(5);
+  // }
+  let saved = localStorage.getItem("student");
+  if (saved) {
+    // console.log(2);
+
+    saved = JSON.parse(saved);
+    const tek = saved.findIndex((stu) => {
+      return stu.idCode === codeMeli.value;
+    }); // bood: 1, na bood: -1
+    // if (tek !== -1) {
+      console.log(tek);
+    if (tek !== -1) {
+      alert("کد ملی تکراری است");
+      return;
+    }
+  }
   let usr = {
     studentName: name.value,
     dateOfBirth: date.value,
     userPass: password.value,
     idCode: codeMeli.value,
-    nomreh:[
-      {dars:"math",nomreh:null},
-      {dars:"farsi",nomreh:null},
-      {dars:"arabic",nomreh:null},
-    ]
+    nomreh: [
+      { dars: "math", nomreh: null },
+      { dars: "farsi", nomreh: null },
+      { dars: "arabic", nomreh: null },
+    ],
   };
 
   console.log(name.value);
@@ -62,4 +78,5 @@ function submit(e) {
   codeMeli.value = "";
   save(usr);
 }
+
 form.addEventListener("submit", submit);

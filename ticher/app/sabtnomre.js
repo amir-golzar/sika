@@ -1,19 +1,19 @@
 let studentsTable = document.getElementById("students-table");
 // alert(location.pathname)
-let i = 0;
-const anim = setInterval(() => {
-  i++;
-  if (i >= 365) {
-    i = 0;
-  }
-  // let i = Math.round(Math.random() * 365)
-  document.body.style.backgroundImage = `linear-gradient(${i}deg, #0db6dd, #000000)`;
-  // document.body.style.backgroundImage = `linear-gradient(${Math.round(Math.random() * 365)}deg, #0db6dd, #000000)`;
-  // document.body.style.backgroundImage = `linear-gradient(${i}deg, #ff0000, #0000ff)`;
-  // if(i === 69){
-  //   clearInterval(anim)
-  // }
-}, 85);
+// let i = 0;
+// const anim = setInterval(() => {
+//   i++;
+//   if (i >= 365) {
+//     i = 0;
+//   }
+//   // let i = Math.round(Math.random() * 365)
+//   document.body.style.backgroundImage = `linear-gradient(${i}deg, #0db6dd, #000000)`;
+//   // document.body.style.backgroundImage = `linear-gradient(${Math.round(Math.random() * 365)}deg, #0db6dd, #000000)`;
+//   // document.body.style.backgroundImage = `linear-gradient(${i}deg, #ff0000, #0000ff)`;
+//   // if(i === 69){
+//   //   clearInterval(anim)
+//   // }
+// }, 85);
 
 const createStudentData = ({
   studentName: name,
@@ -47,6 +47,7 @@ const createStudentData = ({
 
   const nomre = document.createElement("button");
   nomre.innerText = "nomre";
+  nomre.classList.add("nomre");
   nomre.addEventListener("click", function name(params) {
     const overlay = document.createElement("div");
     overlay.classList.add("overlay");
@@ -79,7 +80,7 @@ const createStudentData = ({
     submitNomre.setAttribute("name", "submitN");
     submitNomre.setAttribute("type", "submit");
     submitNomre.setAttribute("value", "submit");
-
+    submitNomre.id = "saveb";
     nomreForm.addEventListener("submit", function (e) {
       e.preventDefault();
       const { riazii, arabii, farsi } = e.target;
@@ -97,15 +98,15 @@ const createStudentData = ({
         return student.idCode === codeMeli;
       });
       // دانش آموز رو ویرایش بکنی
-      savenomre[found].nomreh[2].nomreh = arabii.value;
       savenomre[found].nomreh[0].nomreh = riazii.value;
       savenomre[found].nomreh[1].nomreh = farsi.value;
+      savenomre[found].nomreh[2].nomreh = arabii.value;
 
       // اطلاعات ویرایش شده رو ذخیره بکنی
       localStorage.setItem("student", JSON.stringify(savenomre));
+      // localStorage.setItem("student1", JSON.stringify(savenomre));
       nomreForm.remove();
       overlay.remove();
-      tableRow.remove()
     });
 
     document.body.appendChild(nomreForm);
@@ -140,8 +141,6 @@ const createStudentData = ({
     delStudent.splice(dindex, 1);
 
     localStorage.setItem("student", JSON.stringify(delStudent));
-
-    tableRow.remove();
   }
 
   tableRow.appendChild(nameTag);
@@ -162,7 +161,16 @@ window.addEventListener("load", (e) => {
     // window.location.pathname = "/pages/addstudent.html";
     return;
   }
+
   savedStudents = JSON.parse(savedStudents);
 
-  savedStudents.forEach(createStudentData);
+  savedStudents
+    .filter((student) => student.nomreh[0].nomreh === null)
+    .forEach(createStudentData);
 });
+
+// (a) => {
+//   return a * 2;
+// };
+// (a) => a * 2;
+// a => a * 2;
