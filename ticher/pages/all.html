@@ -7,27 +7,35 @@
     <title>sika</title>
   </head>
   <body>
-    <nav style="backdrop-filter: blur(9PX); background-color: rgba(240, 248, 255, 0.534);">
+    <nav
+      style="
+        backdrop-filter: blur(9px);
+        background-color: rgba(240, 248, 255, 0.534);
+      "
+    >
       <ul>
         <div id="tohi">
-          <a href="../index.html" class="a-s">🇮🇷 سایت آموزش پرورش جمهوری اسلامی ایران</a>
+          <a href="../index.html" class="a-s"
+            >🇮🇷 سایت آموزش پرورش جمهوری اسلامی ایران</a
+          >
         </div>
         <li><a href="sabtnomre.html">ثبت نمره</a></li>
         <li><a href="gozarsh.html">گزارش</a></li>
         <li><a href="addstudent.html">اضافه کردن دانش اموز</a></li>
       </ul>
     </nav>
-    <div style="
-    height: 39%;
-    margin-top: 200px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    ">
-      
+    <div
+      style="
+        height: 39%;
+        margin-top: 200px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        align-content: flex-start;
+      "
+    >
       <table id="students-table">
         <tr>
           <th>name</th>
@@ -36,9 +44,10 @@
           <th>pass</th>
           <th>nomre</th>
         </tr>
+        <tbody id="tbody"></tbody>
       </table>
-      <input type="search" id="search"  placeholder="search  ">
-    </div>
+      <input type="search" id="search" placeholder="search  " autofocus />
+    </div >
 
     <script src="../app/all.js"></script>
   </body>

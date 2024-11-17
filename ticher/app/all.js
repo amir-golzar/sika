@@ -1,7 +1,13 @@
 const all = document.getElementById("students-table");
+let tbody = document.getElementById("tbody");
+const search = document.getElementById("search");
 
+const addStu = (params) => {
+  //   console.log(3);
 
-const addStu = ({ dateOfBirth, idCode, nomreh, studentName, userPass }) => {
+  //   console.log(params);
+  let { dateOfBirth, idCode, nomreh, studentName, userPass } = params;
+
   const tableRow = document.createElement("tr");
   const nameTag = document.createElement("td");
 
@@ -29,12 +35,30 @@ const addStu = ({ dateOfBirth, idCode, nomreh, studentName, userPass }) => {
   tableRow.appendChild(passTag);
   tableRow.appendChild(codeMeliTag);
   tableRow.appendChild(nomreTag);
-  all.appendChild(tableRow);
+  //   const tb = document.createElement("tbody")
+  //   tb.id = "tbody"
+  tbody.appendChild(tableRow);
+  //   all.appendChild(tb);
 };
 
-window.addEventListener("load", function name(p) {
-  let loadstu = this.localStorage.getItem("student");
+function load() {
+  let loadstu = localStorage.getItem("student");
   loadstu = JSON.parse(loadstu);
 
-  loadstu.forEach(addStu);
-});
+  tbody.remove();
+  tbody = document.createElement("tbody");
+  all.appendChild(tbody);
+
+  loadstu
+    .filter((element) => {
+      if (search.value.length === 0) {
+        return true;
+      } else {
+        return element.studentName.includes(search.value);
+      }
+    })
+    .forEach(addStu);
+}
+
+window.addEventListener("load", load);
+search.addEventListener("input", load);
