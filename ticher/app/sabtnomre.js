@@ -50,7 +50,7 @@ const createStudentData = ({
   nomre.classList.add("nomre");
   nomre.addEventListener("click", function name(params) {
     const overlay = document.createElement("div");
-    overlay.classList.add("overlay");
+    // overlay.classList.add("overlay");
     const nomreForm = document.createElement("form");
     nomreForm.classList.add("add-sudent");
 
