@@ -38,4 +38,12 @@ app.post("/sida", (req, res) => {
     });
 });
 
+app.get("/sida", async (req, res) => {
+  const theSttudent = await Users.find({}, { _id: false, __v: false });
+  if (theSttudent) {
+    res.json(theSttudent)
+    
+  }
+});
+
 app.listen(process.env.PORT);
