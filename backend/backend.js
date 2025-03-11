@@ -23,6 +23,7 @@ const userShema = new mongoose.Schema({
 
 const Users = mongoose.model("sida", userShema);
 
+
 app.post("/sida", (req, res) => {
   const { name, dateB, pass, codemeli } = req.body;
 
@@ -37,14 +38,12 @@ app.post("/sida", (req, res) => {
       res.status(500).json({ message: "eroreeeeeeeeeeeeeee", status: "oky" });
     });
 });
-
 app.get("/sida", async (req, res) => {
   const theSttudent = await Users.find({}, { _id: false, __v: false });
   if (theSttudent) {
     res.json(theSttudent);
   }
 });
-
 app.delete("/sida", async (req, res) => {
   const { name } = req.body;
   console.log(name);
@@ -55,5 +54,4 @@ app.delete("/sida", async (req, res) => {
     res.json("delete users");
   }
 });
-
 app.listen(process.env.PORT);
