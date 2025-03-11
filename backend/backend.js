@@ -41,8 +41,18 @@ app.post("/sida", (req, res) => {
 app.get("/sida", async (req, res) => {
   const theSttudent = await Users.find({}, { _id: false, __v: false });
   if (theSttudent) {
-    res.json(theSttudent)
-    
+    res.json(theSttudent);
+  }
+});
+
+app.delete("/sida", async (req, res) => {
+  const { name } = req.body;
+  console.log(name);
+
+  const theSttudent = await Users.deleteOne({ name: name });
+
+  if (theSttudent) {
+    res.json("delete users");
   }
 });
 
