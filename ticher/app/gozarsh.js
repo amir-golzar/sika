@@ -16,6 +16,8 @@ const gozaresh = document.getElementById("students-table");
 // }, 85);
 
 const addStu = ({ dateOfBirth, idCode, nomreh, studentName, userPass }) => {
+  console.log(nomreh);
+  
   const tableRow = document.createElement("tr");
   const nameTag = document.createElement("td");
 
