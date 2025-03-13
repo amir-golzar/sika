@@ -63,7 +63,6 @@ app.delete("/sida", async (req, res) => {
   }
 });
 app.put("/sida", async (req, res) => {
-  // const {moadel,codemeli} = req.body;
 
   const { lessons, codemeli } = req.body;
 
