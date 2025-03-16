@@ -43,7 +43,7 @@ app.post("/sida", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: "eroreeeeeeeeeeeeeee", status: "noky" });
+      res.status(500).json({ message: "erorr", status: "noky" });
     });
 });
 app.get("/sida", async (req, res) => {
