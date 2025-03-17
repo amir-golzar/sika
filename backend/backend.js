@@ -72,6 +72,7 @@ app.put("/sida", async (req, res) => {
   const v = sum / numbers.length;
   console.log(`miangin: ${v}`);
   console.log(codemeli);
+  
 
   const update = await Users.updateOne({ codemeli }, { $set: { moadel: v } });
   if (update) {
