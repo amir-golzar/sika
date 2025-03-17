@@ -73,7 +73,6 @@ app.put("/sida", async (req, res) => {
   console.log(`miangin: ${v}`);
   console.log(codemeli);
   
-
   const update = await Users.updateOne({ codemeli }, { $set: { moadel: v } });
   if (update) {
     console.log(update);
