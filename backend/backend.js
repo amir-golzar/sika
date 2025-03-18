@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const express = require("express");
 const cors = require("cors");
@@ -21,7 +22,12 @@ const userShema = new mongoose.Schema({
   codemeli: { type: "Number", required: true },
   moadel: { type: "Number", default: 0 },
 });
+userShema.pre("save", async function () {
+  console.log(this);
+  console.log(this.pass);
 
+  this.pass = this.pass * 2;
+});
 // 1234
 // oasydrgowertywohgsflgohe3pr9g
 // Ui89*35DB!
@@ -63,7 +69,6 @@ app.delete("/sida", async (req, res) => {
   }
 });
 app.put("/sida", async (req, res) => {
-
   const { lessons, codemeli } = req.body;
 
   let numbers = Object.keys(lessons);
@@ -72,7 +77,7 @@ app.put("/sida", async (req, res) => {
   const v = sum / numbers.length;
   console.log(`miangin: ${v}`);
   console.log(codemeli);
-  
+
   const update = await Users.updateOne({ codemeli }, { $set: { moadel: v } });
   if (update) {
     console.log(update);
