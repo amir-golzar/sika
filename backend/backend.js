@@ -53,10 +53,10 @@ app.get("/sida", async (req, res) => {
   }
 });
 app.delete("/sida", async (req, res) => {
-  const { name } = req.body;
-  console.log(name);
+  const { codemeli } = req.body;
+  console.log(codemeli);
 
-  const theSttudent = await Users.deleteOne({ name: name });
+  const theSttudent = await Users.deleteOne({ codemeli: codemeli });
 
   if (theSttudent) {
     res.json("delete users");
