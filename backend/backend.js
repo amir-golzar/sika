@@ -27,7 +27,7 @@ userShema.pre("save", async function () {
   console.log(this.pass);
 
   // this.pass = this.pass * 2;
-  const salty=await bcrypt.genSalt(4)
+  const salty=await bcrypt.genSalt(12)
   this.pass=await bcrypt.hash(this.pass,salty)
 });
 // 1234
