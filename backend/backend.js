@@ -18,7 +18,7 @@ const mongodbUlr = mongoose.connect("mongodb://127.0.0.1:27017/config");
 const userShema = new mongoose.Schema({
   name: { type: "String", required: true },
   dateB: { type: "Number", required: true },
-  pass: { type: "Number", required: true },
+  pass: { type: "String", required: true },
   codemeli: { type: "Number", required: true },
   moadel: { type: "Number", default: 0 },
 });
@@ -26,7 +26,9 @@ userShema.pre("save", async function () {
   console.log(this);
   console.log(this.pass);
 
-  this.pass = this.pass * 2;
+  // this.pass = this.pass * 2;
+  const salty=await bcrypt.genSalt(4)
+  this.pass=await bcrypt.hash(this.pass,salty)
 });
 // 1234
 // oasydrgowertywohgsflgohe3pr9g
