@@ -36,7 +36,18 @@ userShema.methods.matchPassword= async function (enterpass) {
 }
 
 const Users = mongoose.model("sida", userShema);
+app.get("/sida/i", async (req, res) => {
+  const a = Number(req.headers.codemeli);
+console.log(req.headers.codemeli);
+console.log(req.headers);
 
+  const theSttudent = await Users.findOne({ codemeli: a });
+  if (theSttudent) {
+    res.json(theSttudent);
+    const b=await theSttudent.matchPassword(req.headers.pass)
+    console.log(b);
+  }
+});
 app.post("/sida", (req, res) => {
   const { name, dateB, pass, codemeli } = req.body;
 
