@@ -23,18 +23,14 @@ const userShema = new mongoose.Schema({
   moadel: { type: "Number", default: 0 },
 });
 userShema.pre("save", async function () {
-  console.log(this);
-  console.log(this.pass);
-
   // this.pass = this.pass * 2;
-  const salty=await bcrypt.genSalt(12)
-  this.pass=await bcrypt.hash(this.pass,salty)
+  const salty = await bcrypt.genSalt(12);
+  this.pass = await bcrypt.hash(this.pass, salty);
 });
 
-userShema.methods.matchPassword= async function (enterpass) {
-  return await bcrypt.compare(enterpass,this.pass)
-}
-
+userShema.methods.matchPassword = async function (enteredPass) {
+  return await bcrypt.compare(enteredPass, this.pass);
+};
 const Users = mongoose.model("sida", userShema);
 app.get("/sida/i", async (req, res) => {
   const a = Number(req.headers.codemeli);
