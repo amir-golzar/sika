@@ -30,13 +30,10 @@ userShema.pre("save", async function () {
   const salty=await bcrypt.genSalt(12)
   this.pass=await bcrypt.hash(this.pass,salty)
 });
-// 1234
-// oasydrgowertywohgsflgohe3pr9g
-// Ui89*35DB!
-// solghiassorighoaihgoaeihrgoig
 
-// email
-// salt   : elirhywoi4ehtyorwihbowi4ebuow4i6ugyboigveasoriyvweiouyvw4iu5ygwio4u5ywoi4u5yfwoi4u5fywoieufy
+userShema.methods.matchPassword= async function (enterpass) {
+  return await bcrypt.compare(enterpass,this.pass)
+}
 
 const Users = mongoose.model("sida", userShema);
 
