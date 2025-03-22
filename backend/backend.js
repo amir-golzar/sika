@@ -28,6 +28,7 @@ userShema.pre("save", async function () {
   this.pass = await bcrypt.hash(this.pass, salty);
 });
 
+
 userShema.methods.matchPassword = async function (enteredPass) {
   return await bcrypt.compare(enteredPass, this.pass);
 };
