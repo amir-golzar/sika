@@ -77,6 +77,7 @@ app.delete("/sida", async (req, res) => {
 });
 app.put("/sida", async (req, res) => {
   const { lessons, codemeli } = req.body;
+  
 
   let numbers = Object.keys(lessons);
   let sum = 0;
